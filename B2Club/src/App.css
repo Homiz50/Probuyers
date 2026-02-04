@@ -1,0 +1,6 @@
+/* Default Vite styles removed to support full-width dashboard */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
