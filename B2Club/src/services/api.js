@@ -1,4 +1,5 @@
 import axios from 'axios';
+import decryptResponse from '../utils/decrypt';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8055';
 
@@ -14,6 +15,22 @@ api.interceptors.request.use((config) => {
     }
     return config;
 });
+
+// Add interceptor for response decryption
+api.interceptors.response.use(
+    (response) => {
+        if (response.data && response.data.encrypted) {
+            const decrypted = decryptResponse(response.data.encrypted);
+            if (decrypted) {
+                response.data = decrypted;
+            }
+        }
+        return response;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
 
 export const loginCustomer = (credentials) => api.post('/api/leads/customer/login', credentials);
 export const getCustomerProfile = (id) => api.get(`/api/leads/customer/${id}`);
