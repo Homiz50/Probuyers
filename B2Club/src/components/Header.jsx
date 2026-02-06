@@ -35,7 +35,7 @@ const Header = ({ user }) => {
                 </div>
 
                 <a
-                    href="https://wa.me/919925750145?text=Hello,%20I%20want%20to%20recharge%20my%20B2Club%20wallet."
+                    href="https://wa.me/919825929703?text=Hello,%20I%20want%20to%20recharge%20my%20B2Club%20wallet."
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ textDecoration: 'none' }}
