@@ -58,15 +58,16 @@ const CustomerDashboard = () => {
                     const leads = leadsRes.data.data || [];
                     const totalCount = leadsRes.data.total || leads.length;
 
-                    // Calculate leads added today
+                    // Calculate leads added today based on listedDate (date-only comparison)
                     const now = new Date();
-                    const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                    const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
 
                     const addedToday = leads.filter(lead => {
-                        const dateStr = lead.createdOn || lead.createdAt;
+                        const dateStr = lead.listedDate;
                         if (!dateStr) return false;
-                        const leadDate = new Date(dateStr);
-                        return leadDate >= startOfToday;
+                        // Extract only the date part (YYYY-MM-DD) from the ISO string
+                        const leadDateStr = dateStr.substring(0, 10);
+                        return leadDateStr === todayStr;
                     }).length;
 
                     newData.leads = leads;

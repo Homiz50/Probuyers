@@ -38,7 +38,7 @@ const Login = () => {
                     <div className="logo-icon">
                         <UserSquare2 size={32} color="white" />
                     </div>
-                    <h1>PRObuyers</h1>
+                    <h1>Leadgny</h1>
                     <p>Login to your customer portal</p>
                 </div>
 

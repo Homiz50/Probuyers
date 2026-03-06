@@ -24,7 +24,7 @@ const Header = ({ user }) => {
                     <div className="logo-icon">
                         <UserSquare2 size={24} color="white" />
                     </div>
-                    <span className="logo-text">PRObuyers</span>
+                    <span className="logo-text">Leadgny</span>
                 </div>
             </div>
 

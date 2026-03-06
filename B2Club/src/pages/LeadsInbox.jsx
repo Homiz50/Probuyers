@@ -177,7 +177,12 @@ const LeadsInbox = () => {
                             title: 'Success!',
                             message: 'Lead purchased successfully! You can now view the contact details.'
                         });
-                        fetchData();
+                        // Save scroll position before re-fetching so the page doesn't jump to top
+                        const scrollY = window.scrollY;
+                        await fetchData();
+                        requestAnimationFrame(() => {
+                            window.scrollTo({ top: scrollY, behavior: 'instant' });
+                        });
                     }
                 } catch (err) {
                     showModal({
@@ -185,7 +190,7 @@ const LeadsInbox = () => {
                         title: 'Purchase Failed',
                         message: err.response?.data?.error || "Failed to purchase lead"
                     });
-                } finally {
+                } finally { 
                     setActionLoading(false);
                 }
             }

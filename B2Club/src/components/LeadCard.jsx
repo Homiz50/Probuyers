@@ -70,10 +70,10 @@ const LeadCard = ({ lead, isPurchased, isSaved, onPurchase, onSave, loading }) =
                             <CheckCircle2 size={16} color="var(--success-icon)" />
                             <span>{lead.name}</span>
                         </div>
-                        <div className="phone-number">
+                        <a href={`tel:${lead.number}`} className="phone-number">
                             <Phone size={16} />
                             <span>{lead.number}</span>
-                        </div>
+                        </a>
                     </div>
                 ) : (
                     <div className="locked-footer">
